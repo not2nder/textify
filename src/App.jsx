@@ -444,7 +444,7 @@ function App() {
     <div className="w-screen min-h-screen bg-slate-200 flex justify-center items-center p-4">
       <div className="w-full max-w-[560px] rounded-xl p-4 ring-1 ring-white/10  bg-slate-50 shadow-lg space-y-4 border border-white">
         <div className="flex items-center justify-center gap-2 flex-col">
-          <img src={icon} width="56" alt="" />
+          <img src={icon} width="54" alt="" />
           <h1 className="text-3xl text-neutral-900">Textify</h1>
         </div>
         <p className="text-neutral-500 text-center">
