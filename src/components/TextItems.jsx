@@ -1,4 +1,5 @@
 import { Clipboard } from "lucide-react";
+import { Tooltip } from "react-tooltip";
 
 function TextItems({ fonts, text }) {
   function stylize(text, charset) {
@@ -25,13 +26,18 @@ function TextItems({ fonts, text }) {
       {fonts.map((font, index) => (
         <li
           key={index}
-          className="w-100 flex justify-between px-4 py-3 bg-slate-200 shadow rounded-md hover:bg-slate-300 hover:shadow-md hover:shadow-slate-200 transition-all duration-300 cursor-pointer border border-slate-200"
+          className="w-100 flex justify-between px-4 py-3 bg-slate-200 shadow rounded-md hover:bg-slate-300 hover:shadow-md hover:shadow-slate-200 transition-all duration-300 cursor-pointer border border-slate-400"
           onClick={() => copyToClipboard(stylize(output, font))}
+          data-tooltip-id="tooltip"
+          data-tooltip-content="Clique para copiar"
+          data-tooltip-delay-show={100}
+          data-tooltip-float="true"
         >
           <p className="truncate text-slate-900">{stylize(output, font)}</p>
           <Clipboard className="text-slate-500" />
         </li>
       ))}
+      <Tooltip id="tooltip" />
     </ul>
   );
 }
