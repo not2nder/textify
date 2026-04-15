@@ -49,7 +49,7 @@ function TextItem({ fontset, text }) {
         </p>
       </div>
       <Clipboard className="text-slate-400" />
-      <Tooltip id="tooltip" />
+      <Tooltip style={{ borderRadius: "6px" }} id="tooltip" />
     </li>
   );
 }
