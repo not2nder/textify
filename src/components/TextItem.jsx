@@ -14,6 +14,8 @@ function TextItem({ fontset, text }) {
     });
 
     return str
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
       .split("")
       .map((char) => font[char] || char)
       .join("");
@@ -23,7 +25,7 @@ function TextItem({ fontset, text }) {
     try {
       await navigator.clipboard.writeText(text);
     } catch (err) {
-      console.error("Failed to copy: ", err);
+      console.error(err);
     }
   };
 
@@ -42,9 +44,9 @@ function TextItem({ fontset, text }) {
       data-tooltip-content={stylize(tipText, fontset.charset)}
       data-tooltip-float="true"
     >
-      <div className="flex gap-2">
+      <div className="flex gap-2 ">
         <p className="text-slate-500">{fontset.name} •</p>
-        <p className="truncate text-slate-900">
+        <p className=" text-slate-900 truncate">
           {stylize(output, fontset.charset)}
         </p>
       </div>

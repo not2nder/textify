@@ -14,6 +14,6 @@ Transforme textos comuns em diferentes estilos de fontes. Ideal para uso em rede
 ## Melhorias futuras
 
 - [x] Botão de copiar com feedback
-- [ ] Mais estilos de fontes
-- [ ] Categorias de fontes
+- [x] Mais estilos de fontes
+- [x] Categorias de fontes
 - [ ] Responsividade aprimorada
