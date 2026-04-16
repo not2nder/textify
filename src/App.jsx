@@ -78,26 +78,6 @@ const fontset = [
       },
     ],
   },
-  {
-    type: "Especiais",
-    fonts: [
-      {
-        name: "Aesthetic",
-        charset:
-          "【A】 【B】 【C】 【D】 【E】 【F】 【G】 【H】 【I】 【J】 【K】 【L】 【M】 【N】 【O】 【P】 【Q】 【R】 【S】 【T】 【U】 【V】 【W】 【X】 【Y】 【Z】 【a】 【b】 【c】 【d】 【e】 【f】 【g】 【h】 【i】 【j】 【k】 【l】 【m】 【n】 【o】 【p】 【q】 【r】 【s】 【t】 【u】 【v】 【w】 【x】 【y】 【z】 【0】 【1】 【2】 【3】 【4】 【5】 【6】 【7】 【8】 【9】",
-      },
-      {
-        name: "Antrophobia",
-        charset:
-          "α в ¢ ∂ є ƒ g н ι נ к ℓ м η σ ρ q я ѕ т υ ν ω χ у z α в ¢ ∂ є ƒ g н ι נ к ℓ м η σ ρ q я ѕ т υ ν ω χ у z 0 1 2 3 4 5 6 7 8 9",
-      },
-      {
-        name: "Russo",
-        charset:
-          "А Б С Д Е Ф Г Н И Й К Л М И О П Я Г С Т У В Ш Х У З а б с д е ф г н и й к л м и о п я г с т у в ш х у з 0 1 2 3 4 5 6 7 8 9",
-      },
-    ],
-  },
 ];
 
 function App() {
