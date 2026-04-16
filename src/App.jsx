@@ -1,6 +1,7 @@
 import { useState } from "react";
 import TextItem from "./components/TextItem";
 import icon from "../public/icon.svg";
+import { motion } from "framer-motion";
 
 const fontset = [
   {
@@ -122,8 +123,16 @@ function App() {
         </div>
 
         <ul className="h-[300px] space-y-3 overflow-y-scroll no-scrollbar">
-          {fontset[activeTab].fonts.map((font, index) => (
-            <TextItem key={index} fontset={font} text={text} />
+          {fontset[activeTab].fonts.map((font, i) => (
+            <motion.li
+              className="w-100 flex bg-slate-200 shadow rounded-md hover:bg-slate-300 hover:shadow-md hover:shadow-slate-200 transition-all duration-300 cursor-pointer border border-slate-400"
+              key={font.name}
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.3, delay: i * 0.2 }}
+            >
+              <TextItem fontset={font} text={text} />
+            </motion.li>
           ))}
         </ul>
 
