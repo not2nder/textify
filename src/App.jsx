@@ -92,15 +92,15 @@ function App() {
   }, [darkTheme]);
 
   return (
-    <div className="w-screen min-h-screen flex justify-center items-center p-4 bg-slate-200 dark:bg-[#0f172a]">
+    <div className="w-screen min-h-screen flex justify-center items-center p-4 bg-slate-200 dark:bg-[#021117]">
       <div
         className="w-full max-w-[560px] relative rounded-xl p-4 space-y-4
-        bg-white dark:bg-[#1e293b]
+        bg-white dark:bg-[#0E1E25]
         shadow-lg dark:shadow-black/30
         ring-1 ring-black/5 dark:ring-white/5"
       >
         <div className="absolute right-5 top-5">
-          <div className="bg-zinc-100 dark:bg-slate-800 p-1 rounded-xl flex gap-2 border dark:border-slate-700">
+          <div className="bg-zinc-100 dark:bg-[#16262C] p-1 rounded-xl flex gap-2 border dark:border-slate-700">
             <button
               className="p-2 rounded-lg text-black dark:text-gray-300 hover:bg-slate-200 dark:hover:bg-slate-700"
               onClick={() => setDarkTheme(!darkTheme)}
@@ -121,7 +121,6 @@ function App() {
           Converta seu texto para fontes estilizadas
         </p>
 
-        {/* Input */}
         <input
           type="text"
           placeholder="Digite Seu Texto"
@@ -129,8 +128,8 @@ function App() {
           bg-white
           focus:outline-none focus:ring-2 focus:ring-teal-500
 
-          dark:bg-slate-800 
-          dark:border-slate-700 
+          dark:bg-[#16262C]
+          dark:border-[#1F2E34]
           dark:text-white 
           dark:placeholder:text-gray-400"
           onChange={(event) => setText(event.target.value)}
@@ -163,8 +162,8 @@ function App() {
               className="flex rounded-md cursor-pointer border
               bg-slate-200 border-slate-300 hover:bg-slate-300 hover:shadow-md
 
-              dark:bg-slate-800 dark:border-slate-700 
-              dark:hover:bg-slate-700 dark:shadow-none"
+              dark:bg-[#16262C] dark:border-[#1F2E34] 
+              dark:hover:bg-slate-700/60 dark:shadow-none"
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.3, delay: i * 0.1 }}

@@ -38,7 +38,7 @@ function TextItem({ fontset, text }) {
     text-slate-700
 
     dark:text-gray-300
-    dark:hover:bg-slate-700/60"
+    dark:hover:bg-[slate-700]/60"
       onClick={() => {
         copyToClipboard(stylize(output, fontset.charset));
         setTipText("Copiado!");
