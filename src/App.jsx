@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
 import TextItem from "./components/TextItem";
-import icon from "../public/icon.svg";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
 
@@ -29,9 +30,9 @@ const fontset = [
           "𝘈 𝘉 𝘊 𝘋 𝘌 𝘍 𝘎 𝘏 𝘐 𝘑 𝘒 𝘓 𝘔 𝘕 𝘖 𝘗 𝘘 𝘙 𝘚 𝘛 𝘜 𝘝 𝘞 𝘟 𝘠 𝘡 𝘢 𝘣 𝘤 𝘥 𝘦 𝘧 𝘨 𝘩 𝘪 𝘫 𝘬 𝘭 𝘮 𝘯 𝘰 𝘱 𝘲 𝘳 𝘴 𝘵 𝘶 𝘷 𝘸 𝘹 𝘺 𝘻 0 1 2 3 4 5 6 7 8 9 0",
       },
       {
-        name: "Serif",
+        name: "Double",
         charset:
-          "𝐴 𝐵 𝐶 𝐷 𝐸 𝐹 𝐺 𝐻 𝐼 𝐽 𝐾 𝐿 𝑀 𝑁 𝑂 𝑃 𝑄 𝑅 𝑆 𝑇 𝑈 𝑉 𝑊 𝑋 𝑌 𝑍 𝑎 𝑏 𝑐 𝑑 𝑒 𝑓 𝑔 ℎ 𝑖 𝑗 𝑘 𝑙 𝑚 𝑛 𝑜 𝑝 𝑞 𝑟 𝑠 𝑡 𝑢 𝑣 𝑤 𝑥 𝑦 𝑧 0 1 2 3 4 5 6 7 8 9",
+          "𝔸 𝔹 ℂ 𝔻 𝔼 𝔽 𝔾 ℍ 𝕀 𝕁 𝕂 𝕃 𝕄 ℕ 𝕆 ℙ ℚ ℝ 𝕊 𝕋 𝕌 𝕍 𝕎 𝕏 𝕐 ℤ 𝕒 𝕓 𝕔 𝕕 𝕖 𝕗 𝕘 𝕙 𝕚 𝕛 𝕜 𝕝 𝕞 𝕟 𝕠 𝕡 𝕢 𝕣 𝕤 𝕥 𝕦 𝕧 𝕨 𝕩 𝕪 𝕫",
       },
     ],
   },
@@ -39,19 +40,24 @@ const fontset = [
     type: "Medieval",
     fonts: [
       {
-        name: "Cursive",
+        name: "Script",
+        charset:
+          "𝒜 𝐵 𝒞 𝒟 𝐸 𝐹 𝒢 𝐻 𝐼 𝒥 𝒦 𝐿 𝑀 𝒩 𝒪 𝒫 𝒬 𝑅 𝒮 𝒯 𝒰 𝒱 𝒲 𝒳 𝒴 𝒵 𝒶 𝒷 𝒸 𝒹 𝑒 𝒻 𝑔 𝒽 𝒾 𝒿 𝓀 𝓁 𝓂 𝓃 𝑜 𝓅 𝓆 𝓇 𝓈 𝓉 𝓊 𝓋 𝓌 𝓍 𝓎 𝓏 0 1 2 3 4 5 6 7 8 9",
+      },
+      {
+        name: "Script Bold",
         charset:
           "𝓐 𝓑 𝓒 𝓓 𝓔 𝓕 𝓖 𝓗 𝓘 𝓙 𝓚 𝓛 𝓜 𝓝 𝓞 𝓟 𝓠 𝓡 𝓢 𝓣 𝓤 𝓥 𝓦 𝓧 𝓨 𝓩 𝓪 𝓫 𝓬 𝓭 𝓮 𝓯 𝓰 𝓱 𝓲 𝓳 𝓴 𝓵 𝓶 𝓷 𝓸 𝓹 𝓺 𝓻 𝓼 𝓽 𝓾 𝓿 𝔀 𝔁 𝔂 𝔃 0 1 2 3 4 5 6 7 8 9",
       },
       {
-        name: "Medieval",
-        charset:
-          "𝕬 𝕭 𝕮 𝕯 𝕰 𝕱 𝕲 𝕳 𝕴 𝕵 𝕶 𝕷 𝕸 𝕹 𝕺 𝕻 𝕼 𝕽 𝕾 𝕿 𝖀 𝖁 𝖂 𝖃 𝖄 𝖅 𝕬 𝕭 𝕮 𝕯 𝕰 𝕱 𝕲 𝕳 𝕴 𝕵 𝕶 𝕷 𝕸 𝕹 𝕺 𝕻 𝕼 𝕽 𝕾 𝕿 𝖀 𝖁 𝖂 𝖃 𝖄 𝖅 𝟎 𝟏 𝟐 𝟑 𝟒 𝟓 𝟔 𝟕 𝟖 𝟗",
-      },
-      {
-        name: "Gothic",
+        name: "Fraktur",
         charset:
           "𝔄 𝔅 ℭ 𝔇 𝔈 𝔉 𝔊 ℌ ℑ 𝔍 𝔎 𝔏 𝔐 𝔑 𝔒 𝔓 𝔔 ℜ 𝔖 𝔗 𝔘 𝔙 𝔚 𝔛 𝔜 ℨ 𝔞 𝔟 𝔠 𝔡 𝔢 𝔣 𝔤 𝔥 𝔦 𝔧 𝔨 𝔩 𝔪 𝔫 𝔬 𝔭 𝔮 𝔯 𝔰 𝔱 𝔲 𝔳 𝔴 𝔵 𝔶 𝔷 0 1 2 3 4 5 6 7 8 9",
+      },
+      {
+        name: "Old English",
+        charset:
+          "𝕬 𝕭 𝕮 𝕯 𝕰 𝕱 𝕲 𝕳 𝕴 𝕵 𝕶 𝕷 𝕸 𝕹 𝕺 𝕻 𝕼 𝕽 𝕾 𝕿 𝖀 𝖁 𝖂 𝖃 𝖄 𝖅 𝕬 𝕭 𝕮 𝕯 𝕰 𝕱 𝕲 𝕳 𝕴 𝕵 𝕶 𝕷 𝕸 𝕹 𝕺 𝕻 𝕼 𝕽 𝕾 𝕿 𝖀 𝖁 𝖂 𝖃 𝖄 𝖅 𝟎 𝟏 𝟐 𝟑 𝟒 𝟓 𝟔 𝟕 𝟖 𝟗",
       },
     ],
   },
@@ -106,7 +112,7 @@ function App() {
         <div className="absolute right-5 top-5">
           <div className="bg-zinc-100 dark:bg-[#16262C] p-1 rounded-xl flex gap-2 border dark:border-slate-700">
             <button
-              className="p-2 rounded-lg text-black dark:text-gray-300 hover:bg-slate-200 dark:hover:bg-slate-700"
+              className="p-2 rounded-lg text-black dark:text-gray-300 hover:bg-zinc-200 dark:hover:bg-slate-700"
               onClick={() => setDarkTheme(!darkTheme)}
             >
               {darkTheme ? <Sun size={18} /> : <Moon size={18} />}
@@ -114,16 +120,7 @@ function App() {
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-2 flex-col">
-          <img src={icon} width="54" alt="" />
-          <h1 className="text-3xl text-neutral-900 dark:text-teal-400">
-            Textify
-          </h1>
-        </div>
-
-        <p className="text-neutral-500 text-center dark:text-gray-400">
-          Converta seu texto para fontes estilizadas
-        </p>
+        <Header />
 
         <input
           type="text"
@@ -132,10 +129,7 @@ function App() {
           bg-white
           focus:outline-none focus:ring-2 focus:ring-teal-500
 
-          dark:bg-[#16262C]
-          dark:border-[#1F2E34]
-          dark:text-white 
-          dark:placeholder:text-gray-400"
+          dark:bg-[#16262C] dark:border-[#1F2E34] dark:text-white dark:placeholder:text-gray-400"
           onChange={(event) => setText(event.target.value)}
           value={text}
         />
@@ -166,8 +160,7 @@ function App() {
               className="flex rounded-md cursor-pointer border
               bg-slate-200 border-slate-300 hover:bg-slate-300 hover:shadow-md
 
-              dark:bg-[#16262C] dark:border-[#1F2E34] 
-              dark:hover:bg-slate-700/60 dark:shadow-none"
+              dark:bg-[#16262C] dark:border-[#1F2E34] dark:hover:bg-slate-700/60 dark:shadow-none"
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.3, delay: i * 0.1 }}
@@ -176,16 +169,7 @@ function App() {
             </motion.li>
           ))}
         </ul>
-
-        <div className="text-center text-slate-600 dark:text-gray-400 text-sm">
-          Criado por not2nder •{" "}
-          <a
-            href="https://github.com/not2nder/textify.git"
-            className="text-slate-500 underline dark:text-gray-500"
-          >
-            Código no Github
-          </a>
-        </div>
+        <Footer />
       </div>
     </div>
   );
