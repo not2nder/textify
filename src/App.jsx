@@ -85,10 +85,14 @@ const fontset = [
 function App() {
   const [text, setText] = useState("");
   const [activeTab, setActiveTab] = useState(0);
-  const [darkTheme, setDarkTheme] = useState(false);
+  const [darkTheme, setDarkTheme] = useState(() => {
+    const stored = localStorage.getItem("darkTheme");
+    return stored ? JSON.parse(stored) : false;
+  });
 
   useEffect(() => {
-    document.documentElement.className = darkTheme ? "dark" : "";
+    document.documentElement.classList.toggle("dark", darkTheme);
+    localStorage.setItem("darkTheme", JSON.stringify(darkTheme));
   }, [darkTheme]);
 
   return (
