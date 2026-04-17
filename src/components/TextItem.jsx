@@ -34,25 +34,37 @@ function TextItem({ fontset, text }) {
 
   return (
     <div
-      className="flex gap-2 w-full justify-between px-4 py-3"
+      className="flex gap-2 w-full justify-between px-4 py-3 items-center
+    text-slate-700
+
+    dark:text-gray-300
+    dark:hover:bg-slate-700/60"
       onClick={() => {
         copyToClipboard(stylize(output, fontset.charset));
         setTipText("Copiado!");
       }}
-      onMouseOver={() => setTipText("clique para copiar")}
+      onMouseOver={() => setTipText("Clique para copiar")}
       data-tooltip-id="tooltip"
       data-tooltip-content={tipText}
       data-tooltip-float="false"
     >
       <div className="flex gap-2 truncate">
-        <p className="text-slate-500">{fontset.name} •</p>
-        <p className=" text-slate-900 truncate">
+        <p className="text-slate-500 dark:text-gray-400">{fontset.name} •</p>
+
+        <p className="truncate text-slate-900 dark:text-gray-200">
           {stylize(output, fontset.charset)}
         </p>
       </div>
 
-      <Clipboard className="text-slate-400" />
-      <Tooltip style={{ borderRadius: "6px" }} id="tooltip" />
+      <Clipboard className="text-slate-400 dark:text-gray-500 group-hover:text-teal-400" />
+
+      <Tooltip
+        id="tooltip"
+        style={{
+          borderRadius: "6px",
+          color: "#e2e8f0",
+        }}
+      />
     </div>
   );
 }

@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TextItem from "./components/TextItem";
 import icon from "../public/icon.svg";
 import { motion } from "framer-motion";
+import { Moon, Sun } from "lucide-react";
 
 const fontset = [
   {
@@ -60,7 +61,7 @@ const fontset = [
       {
         name: "W1r3d",
         charset:
-          "4 8 C D 3 F 9 H 1 J K 1 M N 0 P Q R 5 T U V W X Y 2 4 8 c d 3 f 9 h 1 j k 1 m n 0 p q r 5 t u v w x y 2 0 1 2 3 4 5 6 7 8 9 0",
+          "4 B C D 3 F 9 H 1 J K L M N 0 P Q R 5 T U V W X Y Z 4 b c d 3 f g h 1 j k 1 m n 0 p q r 5 t u v w x y z 0 1 2 3 4 5 6 7 8 9 0",
       },
       {
         name: "Rabiscado",
@@ -84,65 +85,101 @@ const fontset = [
 function App() {
   const [text, setText] = useState("");
   const [activeTab, setActiveTab] = useState(0);
+  const [darkTheme, setDarkTheme] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.className = darkTheme ? "dark" : "";
+  }, [darkTheme]);
 
   return (
-    <div className="w-screen min-h-screen bg-slate-200 flex justify-center items-center p-4">
-      <div className="w-full max-w-[560px] rounded-xl p-4 ring-1 ring-white/10  bg-slate-50 shadow-lg space-y-3 border border-white">
+    <div className="w-screen min-h-screen flex justify-center items-center p-4 bg-slate-200 dark:bg-[#0f172a]">
+      <div
+        className="w-full max-w-[560px] relative rounded-xl p-4 space-y-4
+        bg-white dark:bg-[#1e293b]
+        shadow-lg dark:shadow-black/30
+        ring-1 ring-black/5 dark:ring-white/5"
+      >
+        <div className="absolute right-5 top-5">
+          <div className="bg-zinc-100 dark:bg-slate-800 p-1 rounded-xl flex gap-2 border dark:border-slate-700">
+            <button
+              className="p-2 rounded-lg text-black dark:text-gray-300 hover:bg-slate-200 dark:hover:bg-slate-700"
+              onClick={() => setDarkTheme(!darkTheme)}
+            >
+              {darkTheme ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+          </div>
+        </div>
+
         <div className="flex items-center justify-center gap-2 flex-col">
           <img src={icon} width="54" alt="" />
-          <h1 className="text-3xl text-neutral-900">Textify</h1>
+          <h1 className="text-3xl text-neutral-900 dark:text-teal-400">
+            Textify
+          </h1>
         </div>
-        <p className="text-neutral-500 text-center">
+
+        <p className="text-neutral-500 text-center dark:text-gray-400">
           Converta seu texto para fontes estilizadas
         </p>
 
+        {/* Input */}
         <input
           type="text"
           placeholder="Digite Seu Texto"
-          className="w-full border-2 border-slate-300 outline-slate-400 px-4 py-3 rounded-xl"
-          onChange={(event) => {
-            setText(event.target.value);
-          }}
+          className="w-full px-4 py-3 rounded-xl border border-slate-300
+          bg-white
+          focus:outline-none focus:ring-2 focus:ring-teal-500
+
+          dark:bg-slate-800 
+          dark:border-slate-700 
+          dark:text-white 
+          dark:placeholder:text-gray-400"
+          onChange={(event) => setText(event.target.value)}
           value={text}
         />
 
-        <div className="flex flex-wrap border-b transition-all duration-300 gap-2">
+        <div className="flex flex-wrap border-b gap-2 dark:border-gray-600">
           {fontset.map((font, index) => (
-            <button
+            <motion.button
               key={index}
               className={`px-4 py-2 font-semibold rounded-t ${
                 activeTab === index
-                  ? "border-b-2 border-teal-700 text-teal-700 bg-gray-300 bg-opacity-50"
-                  : "text-gray-500 hover:text-teal-600 hover:bg-gray-300 hover:bg-opacity-50"
+                  ? "border-b-2 border-teal-500 text-teal-500 bg-slate-200/60 dark:bg-slate-700/40"
+                  : "text-gray-500 hover:text-teal-500 hover:bg-slate-200 dark:hover:bg-slate-700/50"
               }`}
               onClick={() => setActiveTab(index)}
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.3, delay: index * 0.15 }}
             >
               {font.type}
-            </button>
+            </motion.button>
           ))}
         </div>
 
         <ul className="h-[300px] space-y-3 overflow-y-scroll no-scrollbar">
           {fontset[activeTab].fonts.map((font, i) => (
             <motion.li
-              className="w-100 flex bg-slate-200 shadow rounded-md hover:bg-slate-300 hover:shadow-md hover:shadow-slate-200 transition-all duration-300 cursor-pointer border border-slate-400"
               key={font.name}
+              className="flex rounded-md cursor-pointer border
+              bg-slate-200 border-slate-300 hover:bg-slate-300 hover:shadow-md
+
+              dark:bg-slate-800 dark:border-slate-700 
+              dark:hover:bg-slate-700 dark:shadow-none"
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.3, delay: i * 0.2 }}
+              transition={{ duration: 0.3, delay: i * 0.1 }}
             >
               <TextItem fontset={font} text={text} />
             </motion.li>
           ))}
         </ul>
 
-        <div className="text-center text-slate-600">
+        <div className="text-center text-slate-600 dark:text-gray-400 text-sm">
           Criado por not2nder •{" "}
           <a
             href="https://github.com/not2nder/textify.git"
-            className="text-slate-400 underline"
+            className="text-slate-500 underline dark:text-gray-500"
           >
-            {" "}
             Código no Github
           </a>
         </div>
